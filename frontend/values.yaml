@@ -20,16 +20,16 @@ resources:
 
 ingress:
   enabled: true
-    className: nginx
-    hosts:
-      - host: app.zbteky.shop
-        paths:
-          - path: /
-            pathType: Prefix
-    tls:
-      - secretName: app-tls
-        hosts:
-          - app.zbteky.shop
+  className: nginx
+  hosts:
+    - host: app.zbteky.shop
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: app-tls
+      hosts:
+        - app.zbteky.shop
 
 affinity: {}
 
