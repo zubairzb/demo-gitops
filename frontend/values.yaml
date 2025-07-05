@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: http://629490206392.dkr.ecr.eu-central-1.amazonaws.com/demo/frontend
-  tag: 6
+  repository: 629490206392.dkr.ecr.eu-central-1.amazonaws.com/demo/frontend
+  tag: 7
   pullPolicy: Always
   containerPort: 80
 
@@ -19,17 +19,17 @@ resources:
     memory: "512Mi"
 
 ingress:
-  enabled: false
-  # className: nginx
-  # hosts:
-  #   - host: domain-name-here
-  #     paths:
-  #       - path: /
-  #         pathType: Prefix
-  # tls:
-  #   - secretName: app-name-tls
-  #     hosts:
-  #       - domain-name-here
+  enabled: true
+    className: nginx
+    hosts:
+      - host: app.zbteky.shop
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: app-tls
+        hosts:
+          - app.zbteky.shop
 
 affinity: {}
 
