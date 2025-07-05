@@ -18,5 +18,5 @@ spec:
         name: memory
         target:
           type: Utilization
-          averageUtilization: {{ .Values.hpa.targetMemoryUtilization }}
+          averageUtilization: {{ .Values.hpa.targetCPUUtilizationPercentage  }}
 {{- end }}
