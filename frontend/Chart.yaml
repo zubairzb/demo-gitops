@@ -1,0 +1,4 @@
+apiVersion: v1
+name: searcher-ai
+version: 1.0.0
+description: Helm chart for Node.js app

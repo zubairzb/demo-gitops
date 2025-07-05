@@ -1,0 +1,68 @@
+replicaCount: 1
+
+image:
+  repository: http://629490206392.dkr.ecr.eu-central-1.amazonaws.com/demo/backend
+  tag: 8
+  pullPolicy: Always
+  containerPort: 3000
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  requests:
+    cpu: "128m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+ingress:
+  enabled: false
+  # className: nginx
+  # hosts:
+  #   - host: domain-name-here
+  #     paths:
+  #       - path: /
+  #         pathType: Prefix
+  # tls:
+  #   - secretName: app-name-tls
+  #     hosts:
+  #       - domain-name-here
+
+affinity: {}
+
+tolerations: []
+
+nodeSelector: {}
+
+env:
+  PORT: 5000
+
+secret:
+  MONGO_URL: mongodb://demo-user:demo123@18.185.99.13:27017/demodb
+
+strategy:
+  enabled: true
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 25%
+
+#Scaling configurations - edit this if you need to enable scaling for stateless applications.
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+vpa:
+  enabled: true
+  # Update the values here based on the application requirment.
+  minAllowed:
+    cpu: "100m"
+    memory: "128Mi"
+  maxAllowed:
+    cpu: "250m"
+    memory: "256Mi"
