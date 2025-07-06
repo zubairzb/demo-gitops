@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: 629490206392.dkr.ecr.eu-central-1.amazonaws.com/demo/frontend
-  tag: 10
+  tag: 11
   pullPolicy: Always
   containerPort: 80
 
