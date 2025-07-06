@@ -29,14 +29,14 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
   hosts:
-    - host: api.zbteky.shop
+    - host: api-staging.zbteky.shop
       paths:
         - path: /
           pathType: Prefix
   tls:
     - secretName: api-tls
       hosts:
-        - api.zbteky.shop
+        - api-staging.zbteky.shop
 
 affinity: {}
 
